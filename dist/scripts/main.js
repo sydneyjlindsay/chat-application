@@ -1,29 +1,34 @@
 $(document).on('ready', start); 
 
+	var user = $('#usernameBox');
+	var message = $('#messageBox');
+	var url = 'https://agile-plateau-2979.herokuapp.com/chat/main';
+
+	
 function start(e) {
 
-	$('#myModal').modal('show');
+	$('#chatRoom').hide();
+	
 
-	$('#input-form').on('submit', onButtonClick);
-	var $messageText = $('#messageBox');
-	var $username = $('#usernameBox');
+	$("#myModal button").on('click', function() {
+		$('#main').hide();
+		$('#chatRoom').show();
+	
+	});
+
+	$('#message-text').on('submit', onButtonClick);
+	// var $messageText = $('#messageBox');
+	// var $username = $('#usernameBox');
 
 	function onButtonClick(e) {
 		e.preventDefault();
-
-		$.post(
-			'https://agile-plateau-2979.herokuapp.com/main', 
-			{name: $username.val(), text: $messageText.val()}
-		);
-		$messageText.val('');
+		$.post(url, {name: user.val(), text: message.val(), room: ''});
 		
+		message.val('');
 	}
 
 	function getMessages() {
-		$.get('https://agile-plateau-2979.herokuapp.com/main', 
-			onMessagesReceived, 
-			'json'
-		);
+		$.get(url, onMessagesReceived,'json');
 	}
 
 	function onMessagesReceived(messageList) {
@@ -47,6 +52,7 @@ function start(e) {
 
 	getMessages();
 }
+
 
 
 

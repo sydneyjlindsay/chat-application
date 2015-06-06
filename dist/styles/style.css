@@ -1,12 +1,12 @@
-#chat span {
-    text-decoration: underline;
+#message-text > div > span > button {
+    height: 50px;
 }
 
 #messageBox, #input-form > div > span > button {
     height: 50px;
 }
 
-body > div > div.row > div > button {
+#chatRoom > div > div.row > div > button {
     margin-bottom: 10px;
 }
 
