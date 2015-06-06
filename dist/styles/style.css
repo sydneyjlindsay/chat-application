@@ -1,0 +1,21 @@
+#chat span {
+    text-decoration: underline;
+}
+
+#messageBox, #input-form > div > span > button {
+    height: 50px;
+}
+
+body > div > div.row > div > button {
+    margin-bottom: 10px;
+}
+
+#chat {
+    height: 300px;
+    overflow: scroll;
+
+}
+
+#usernameBox {
+    margin: 10px;
+}
