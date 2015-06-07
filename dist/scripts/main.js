@@ -2,7 +2,9 @@ $(document).on('ready', start);
 
 	var user = $('#usernameBox');
 	var message = $('#messageBox');
+	var room = $('#roomnameBox').val();
 	var url = 'https://agile-plateau-2979.herokuapp.com/chat/main';
+	
 
 	
 function start(e) {
@@ -10,10 +12,11 @@ function start(e) {
 	$('#chatRoom').hide();
 	$('#leaderboard').hide();
 	
-
 	$("#myModal button").on('click', function() {
 		$('#main').hide();
 		$('#chatRoom').show();
+		$('.room-one').hide(); 
+		$('.room-two').hide(); 
 	});
 
 	$('#leaderboard-nav').on('click', function(){
@@ -27,16 +30,26 @@ function start(e) {
 	 	$('#main').hide();
 		$('#chatRoom').show();
 		$('#leaderboard').hide();
-	
+		$('.room-one').hide(); 
+		$('.room-two').hide(); 
 	 });
+
+	 // $('#change-room').on('click', function() {
+	 // 	$('#change-room li').addClass('active');
+	 // 	if($target = $(this)) {
+	 // 		room = $('#change-room').id();
+	 // 	}
+	 // 	console.log(room);
+	 // 	$('#change-room li').removeClass('active')
+	 // });
+
 
 
 	$('#message-text').on('submit', onButtonClick);
 
-
 	function onButtonClick(e) {
 		e.preventDefault();
-		$.post(url, {name: user.val(), text: message.val(), room: ''});
+		$.post(url, {name: user.val(), text: message.val()});
 		
 		message.val('');
 	}
@@ -53,14 +66,22 @@ function start(e) {
 		);
 	}
 
+	function getTopRooms() {
+		$.get(
+			'https://agile-plateau-2979.herokuapp.com/stats/top_ten_rooms',
+			onTopRooms,
+			'json'
+		);
+	}
+
 	function onMessagesReceived(messageList) {
 		console.log('success');
 		$('#chat').scrollTop($('#chat').prop('scrollHeight'));
 		var htmlString = ''; 
 		for(var i=0; i<messageList.length; i++) {
 			var message = messageList[i];
-			if(message.hasOwnProperty('name') && message.hasOwnProperty('text') && message.hasOwnProperty('created_at')) {
-				htmlString += '<div><span>'+message.name+':</span> '+message.text+'</div><br>';
+			if(message.name !== ('') && message.hasOwnProperty('name') && message.hasOwnProperty('text')) {
+				htmlString += '<div>'+message.text+'<p>'+'     '+message.name+', ' + moment(message.created_at).startOf('minute').fromNow()+'</p></div>';
 			}
 			
 		}
@@ -72,10 +93,20 @@ function start(e) {
 		var htmlString = '';
 		for(var i=0; i<leaderboardList.length; i++) {
 			var topUsers = leaderboardList[i];
-			htmlString += '<div>'+'<h4>'+topUsers+'</h4>'+'</div>';	
+			htmlString += '<div>'+'<h4>'+topUsers.name+'</h4>'+' '+'<span class="badge">'+topUsers.count+'</span>'+'</div>';
 		}
 
-		$('#leader').html(htmlString);
+		$('#leaders').html(htmlString);
+	}	
+
+	function onTopRooms(leaderboardList) {
+		var htmlString = '';
+		for(var i=0; i<leaderboardList.length; i++) {
+			var topRooms = leaderboardList[i];
+			htmlString += '<div>'+'<h4>'+topRooms.room+'</h4>'+'</div>';	
+		}
+
+		$('#room-leader').html(htmlString);
 	}	
 
 	// setInterval("$('#chat').scrollTop($('#chat').prop('scrollHeight'))", 100);
@@ -85,6 +116,8 @@ function start(e) {
 	getMessages();
 
 	getTopUsers();
+
+	getTopRooms();
 }
 
 

@@ -26,16 +26,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active" id="leaderboard-nav"><a href="#">Leaderboards <span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Room <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#main">Main</a></li>
-            <li><a href="#">Room 2</a></li>
-            <li><a href="#">Room 3</a></li>
+            <li><a href="#room-2">Room 1</a></li>
+            <li><a href="#room-1">Room 2</a></li>
           </ul>
-        </li>
-      </ul>
-        </li>
+        </li> -->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -44,8 +42,8 @@
 <div class="container" id="main">
   <div class="jumbotron text-center">
     <h1>Welcome!</h1>
-    <p class="lead">To get started, please enter a username</p>
-    <p><a class="btn btn-large btn-success" data-toggle="modal" data-target="#myModal">Username</a></p>
+    <p class="lead">To start chatting, please enter a username</p>
+    <p><a class="btn btn-large btn-success" data-toggle="modal" data-target="#myModal">Get Started</a></p>
   </div>
 </div> <!-- /container -->
 
@@ -93,9 +91,16 @@
     <section class="page" id="chatRoom"> 
     <div class="container-fluid">
     <div class="page-header">
+     <!-- <h4 class="text-muted">Current Room:</h4> -->
     <h3 class="main-room">Main Room</h3>
     <h3 class="room-one">Room One</h3>
     <h3 class="room-two">Room Two</h3>
+    <!-- <select class="form-control" id="change-room">
+        <option>Select Room</option>
+        <option value="main-room">Main Room</option>
+        <option value="room-one">Room One</option>
+        <option value="room-two">Room Two</option>
+    </select> -->
 </div>
     <div class="row">
         <div class="col-sm-3 col-md-3 col-md-offset-1">
@@ -144,8 +149,8 @@
           <div class="panel panel-default">
             <div class="panel-heading"><h3>Top Users</h3></div>
             <div class="panel-body">
-                <div id="top-users">  
-                    <div id="leader"> </div>
+                <div id="top-users"> 
+                    <div id="leaders"></div>
                 </div>
             </div>
           </div>
@@ -155,7 +160,7 @@
           <div class="panel panel-default">
             <div class="panel-heading"><h3>Top Rooms</h3></div>
             <div class="panel-body">
-                <div id="top-users">  
+                <div id="top-rooms">  
                     <div id="room-leader"> </div>
                 </div>
             </div>
@@ -165,6 +170,7 @@
 
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
     <script type="text/javascript" src="bower_components/backbone/backbone-min.js"></script>
