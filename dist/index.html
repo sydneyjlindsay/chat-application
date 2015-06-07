@@ -25,17 +25,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Leaderboards <span class="sr-only">(current)</span></a></li>
+        <li class="active" id="leaderboard-nav"><a href="#">Leaderboards <span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Room <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#main">Main</a></li>
             <li><a href="#">Room 2</a></li>
             <li><a href="#">Room 3</a></li>
-            <!-- <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li> -->
           </ul>
         </li>
       </ul>
@@ -97,7 +93,9 @@
     <section class="page" id="chatRoom"> 
     <div class="container-fluid">
     <div class="page-header">
-    <h3>Main Room</h3>   
+    <h3 class="main-room">Main Room</h3>
+    <h3 class="room-one">Room One</h3>
+    <h3 class="room-two">Room Two</h3>
 </div>
     <div class="row">
         <div class="col-sm-3 col-md-3 col-md-offset-1">
@@ -110,7 +108,17 @@
 <!-- Modal -->
       
         <div class="container">
-        <div class="row">
+        <div class="row main-room">
+                <div class="well">
+                    <div id="chat"></div>
+                </div>
+            </div>
+            <div class="row room-one">
+                <div class="well">
+                    <div id="chat"></div>
+                </div>
+            </div>
+            <div class="row room-two">
                 <div class="well">
                     <div id="chat"></div>
                 </div>
@@ -126,9 +134,35 @@
                 </form>
             </div> 
         </div>
-       
         </div>
+        
     </section>
+
+    <div class="container-fluid" id="leaderboard">
+    <hr>
+        <div class="col-md-3 col-md-offset-3">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Top Users</h3></div>
+            <div class="panel-body">
+                <div id="top-users">  
+                    <div id="leader"> </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Top Rooms</h3></div>
+            <div class="panel-body">
+                <div id="top-users">  
+                    <div id="room-leader"> </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
