@@ -80,7 +80,7 @@ function start(e) {
 
 	function getRecentUsers() {
 		$.get(
-			'https://agile-plateau-2979.herokuapp.com/stats/recent_users',
+			'https://agile-plateau-2979.herokuapp.com/recent_users',
 			onRecentUsers,
 			'json'
 		);
