@@ -25,6 +25,7 @@ function start(e) {
 		$('#main').hide();
 		$('#chatRoom').hide();
 		$('#leaderboard').show();
+		$('.navbar-right a').show();
 	});
 
 	 $('.navbar-header a').on('click', function() {
@@ -34,6 +35,7 @@ function start(e) {
 		$('#leaderboard').hide();
 		$('.room-one').hide(); 
 		$('.room-two').hide(); 
+		$('.navbar-right a').show();
 	 });
 
 	 $('.navbar-right a').on('click', function() {
